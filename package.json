@@ -2,12 +2,15 @@
   "name": "@dmeents/semantic-release-yarn",
   "version": "1.0.0",
   "description": "publish an npm package using yarn@berry",
-  "main": "index.js",
-  "types": "./index.d.ts",
+  "main": "./.dist/index.js",
+  "types": "./.dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
-      "require": "./index.js",
-      "types": "./index.d.ts"
+      "require": "./.dist/index.js",
+      "types": "./.dist/index.d.ts"
     }
   },
   "repository": "https://github.com/dmeents/semantic-release-yarn.git",
