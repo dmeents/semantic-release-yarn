@@ -23,7 +23,7 @@
   "scripts": {
     "build": "rm -rf ./.dist && tsc --project tsconfig.build.json",
     "test": "jest --passWithNoTests",
-    "test:coverage": "jest --coverage -ci --bail --silent --forceExit",
+    "test:coverage": "jest --coverage -ci --bail --silent --forceExit --passWithNoTests",
     "release": "semantic-release"
   },
   "packageManager": "yarn@3.3.0",
