@@ -20,7 +20,7 @@ jobs:
       - name: Move to semantic-release-yarn
         run: cd ./semantic-release-yarn
       - name: Test Package
-        uses: ../maestro/src/github-actions/test-standard
+        uses: ./maestro/src/github-actions/test-standard
         with:
           testSuite: ${{ matrix.suite }}
 
@@ -39,7 +39,7 @@ jobs:
       - name: Move to semantic-release-yarn
         run: cd ./semantic-release-yarn
       - name: Build semantic-release-yarn
-        uses: ../maestro/src/github-actions/build-standard
+        uses: ./maestro/src/github-actions/build-standard
         with:
           packageName: semantic-release-yarn
 
@@ -61,7 +61,7 @@ jobs:
       - name: Move to semantic-release-yarn
         run: cd ./semantic-release-yarn
       - name: Release @dmeents/semantic-release-yarn
-        uses: ../maestro/src/github-actions/release-standard
+        uses: ./maestro/src/github-actions/release-standard
         with:
           packageName: semantic-release-yarn
           npmToken: ${{ secrets.NPM_TOKEN }}
