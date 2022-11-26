@@ -4,6 +4,11 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationMap": true,
+    "target": "esnext",
+    "lib": [
+      "esnext"
+    ],
+    "module": "commonjs",
     "downlevelIteration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -15,9 +20,10 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "emitDeclarationOnly": true,
     "baseUrl": ".",
     "outDir": ".dist"
   },
-  "include": [ "./src/**/*" ]
+  "include": [
+    "./src/**/*"
+  ]
 }
