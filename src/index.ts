@@ -16,7 +16,7 @@ export async function verifyConditions(
 
   ctx.logger.log(`read ${ctx.cwd}/package.json`);
   const packageJson = await getPackage(ctx.cwd);
-  const registry = packageJson?.publishConfig?.registry;
+  const registry = packageJson?.publishConfig?.registry as string;
 
   if (packageJson.private === true) {
     ctx.logger.log('skipping since package is private');
@@ -82,8 +82,6 @@ export async function prepare(config: PluginConfig, ctx: PrepareContext) {
 }
 
 export async function publish(config: PluginConfig, ctx: PrepareContext) {
-  config = PluginConfig.normalize(config);
-
   if (!verified || !prepared) {
     ctx.logger.log('skipping since not verified or prepared');
     return;
