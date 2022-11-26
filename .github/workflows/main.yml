@@ -10,17 +10,8 @@ jobs:
         suite: [ 'jest' ]
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: ./semantic-release-yarn
-      - name: Checkout Maestro Actions
-        uses: actions/checkout@v3
-        with:
-          repository: dmeents/maestro
-          path: ./maestro
-      - name: Move to semantic-release-yarn
-        run: cd ./semantic-release-yarn
       - name: Test Package
-        uses: ./maestro/src/github-actions/test-standard
+        uses: dmeents/maestro/src/github-actions/test-standard
         with:
           testSuite: ${{ matrix.suite }}
 
@@ -29,17 +20,8 @@ jobs:
     needs: [ test ]
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: ./semantic-release-yarn
-      - name: Checkout Maestro Actions
-        uses: actions/checkout@v3
-        with:
-          repository: dmeents/maestro
-          path: ./maestro
-      - name: Move to semantic-release-yarn
-        run: cd ./semantic-release-yarn
       - name: Build semantic-release-yarn
-        uses: ./maestro/src/github-actions/build-standard
+        uses: dmeents/maestro/src/github-actions/build-standard
         with:
           packageName: semantic-release-yarn
 
@@ -49,19 +31,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: ./semantic-release-yarn
       - name: Get latest code
         run: git pull origin main
-      - name: Checkout Maestro Actions
-        uses: actions/checkout@v3
-        with:
-          repository: dmeents/maestro
-          path: ./maestro
-      - name: Move to semantic-release-yarn
-        run: cd ./semantic-release-yarn
       - name: Release @dmeents/semantic-release-yarn
-        uses: ./maestro/src/github-actions/release-standard
+        uses: dmeents/maestro/src/github-actions/release-standard
         with:
           packageName: semantic-release-yarn
           npmToken: ${{ secrets.NPM_TOKEN }}
