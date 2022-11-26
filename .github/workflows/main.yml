@@ -1,0 +1,60 @@
+name: main
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [ 'jest' ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Checkout Maestro Actions
+        uses: actions/checkout@v3
+        with:
+          repository: dmeents/maestro
+          path: ./maestro
+      - name: Test Package
+        uses: ./maestro/src/github-actions/test-standard
+        with:
+          testSuite: ${{ matrix.suite }}
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [ test ]
+    steps:
+      - name: Checkout semantic-release-yarn
+        uses: actions/checkout@v3
+      - name: Checkout Maestro Actions
+        uses: actions/checkout@v3
+        with:
+          repository: dmeents/maestro
+          path: ./maestro
+      - name: Build semantic-release-yarn
+        uses: ./maestro/src/github-actions/build-standard
+        with:
+          packageName: @dmeents/semantic-release-yarn
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [ build ]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout semantic-release-yarn
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Get latest code
+        run: git pull origin main
+      - name: Checkout Maestro Actions
+        uses: actions/checkout@v3
+        with:
+          repository: dmeents/maestro
+          path: ./maestro
+      - name: Release @dmeents/semantic-release-yarn
+        uses: ./maestro/src/github-actions/release-standard
+        with:
+          packageName: @dmeents/semantic-release-yarn
+          npmToken: ${{ secrets.NPM_TOKEN }}
+          githubToken: ${{ secrets.GH_TOKEN }}
