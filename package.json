@@ -19,7 +19,8 @@
   },
   "scripts": {
     "build": "rm -rf ./.dist && tsc --project tsconfig.build.json",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "test:coverage": "jest --coverage -ci --bail --silent --forceExit"
   },
   "packageManager": "yarn@3.3.0",
   "devDependencies": {
