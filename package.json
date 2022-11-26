@@ -13,6 +13,9 @@
       "types": "./.dist/index.d.ts"
     }
   },
+  "engines": {
+    "node": ">=19"
+  },
   "repository": "https://github.com/dmeents/semantic-release-yarn.git",
   "author": "David Meents <david@allido.io>",
   "license": "MIT",
