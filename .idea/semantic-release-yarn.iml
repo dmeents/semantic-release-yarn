@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.dist" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/.yarn" />
+      <excludePattern pattern="yarn.lock" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

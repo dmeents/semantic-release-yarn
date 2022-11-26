@@ -19,3 +19,7 @@ export interface PrepareContext extends Context {
 export interface LineJson {
   location?: string;
 }
+
+export interface ReadPackageResults {
+  name?: string;
+}

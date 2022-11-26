@@ -1,21 +1,21 @@
-import { NormalizedPackageJson } from 'read-pkg';
 import { error, ErrorTypes } from './error';
 import semver from 'semver';
+import { ReadPackageResults } from '../types';
 
 export async function getPackage(cwd: string) {
   const { readPackage } = await import('read-pkg');
-  let pkg: NormalizedPackageJson;
+  let packageJson: ReadPackageResults;
 
   try {
-    pkg = await readPackage({ cwd });
+    packageJson = await readPackage({ cwd });
   } catch (err) {
     const { code } = err as { code?: string };
     if (code === 'ENOENT') throw error(ErrorTypes.MISSING_PACKAGE);
     throw new AggregateError([err]);
   }
 
-  if (!pkg.name) throw error(ErrorTypes.MISSING_PACKAGE_NAME);
-  return pkg;
+  if (!packageJson.name) throw error(ErrorTypes.MISSING_PACKAGE_NAME);
+  return packageJson;
 }
 
 export function getNpmToken(env: NodeJS.ProcessEnv): string {
