@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Test Package
-        uses: dmeents/maestro/src/github-actions/test-standard
+        uses: dmeents/maestro/src/github-actions/test-standard@main
         with:
           testSuite: ${{ matrix.suite }}
 
@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build semantic-release-yarn
-        uses: dmeents/maestro/src/github-actions/build-standard
+        uses: dmeents/maestro/src/github-actions/build-standard@main
         with:
           packageName: semantic-release-yarn
 
@@ -34,7 +34,7 @@ jobs:
       - name: Get latest code
         run: git pull origin main
       - name: Release @dmeents/semantic-release-yarn
-        uses: dmeents/maestro/src/github-actions/release-standard
+        uses: dmeents/maestro/src/github-actions/release-standard@main
         with:
           packageName: semantic-release-yarn
           npmToken: ${{ secrets.NPM_TOKEN }}
