@@ -1,17 +1,17 @@
 import { PluginConfig } from './config/plugin';
-import { Yarn } from './utils/yarn';
 import { error, ErrorTypes } from './utils/error';
 import { getChannel, getNpmToken, getPackage } from './utils';
 import { Context, PrepareContext } from './types';
 
 let verified = false;
 let prepared = false;
-const yarn = new Yarn();
 
 export async function verifyConditions(
   config: PluginConfig,
   ctx: Context,
 ): Promise<void> {
+  const { Yarn } = await import('./utils/yarn');
+  const yarn = new Yarn();
   config = PluginConfig.normalize(config);
 
   ctx.logger.log(`read ${ctx.cwd}/package.json`);
@@ -49,6 +49,8 @@ export async function verifyConditions(
 }
 
 export async function prepare(config: PluginConfig, ctx: PrepareContext) {
+  const { Yarn } = await import('./utils/yarn');
+  const yarn = new Yarn();
   ctx.logger.log(`read ${ctx.cwd}/package.json`);
   config = PluginConfig.normalize(config);
 
@@ -82,6 +84,8 @@ export async function prepare(config: PluginConfig, ctx: PrepareContext) {
 }
 
 export async function publish(config: PluginConfig, ctx: PrepareContext) {
+  const { Yarn } = await import('./utils/yarn');
+  const yarn = new Yarn();
   config = PluginConfig.normalize(config);
 
   if (!verified || !prepared) {
