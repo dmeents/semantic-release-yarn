@@ -22,4 +22,12 @@ export interface LineJson {
 
 export interface ReadPackageResults {
   name?: string;
+  publishConfig?: {
+    registry?: string;
+  };
+  private?: boolean;
+  version?: string;
+  dependencies?: {
+    [key: string]: string;
+  };
 }
