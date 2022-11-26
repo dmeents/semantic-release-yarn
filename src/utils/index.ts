@@ -1,8 +1,9 @@
-import { NormalizedPackageJson, readPackage } from 'read-pkg';
+import { NormalizedPackageJson } from 'read-pkg';
 import { error, ErrorTypes } from './error';
 import semver from 'semver';
 
 export async function getPackage(cwd: string) {
+  const { readPackage } = await import('read-pkg');
   let pkg: NormalizedPackageJson;
 
   try {
