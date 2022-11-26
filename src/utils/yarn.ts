@@ -1,4 +1,5 @@
 import { LineJson } from '../types';
+import execa from 'execa';
 
 interface ConstructorProps {
   readonly HOME?: string;
@@ -80,7 +81,6 @@ export class Yarn {
   }
 
   async useExeca(args: string) {
-    const { execa } = await import('execa');
     const command = args.split(' ');
     const useCwd = this.cwd && { cwd: this.cwd };
     const env = { HOME: this.home, YARN_RC_FILENAME: this.yarnRcFileName };

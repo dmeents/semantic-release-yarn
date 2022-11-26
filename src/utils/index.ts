@@ -1,27 +1,12 @@
 import { error, ErrorTypes } from './error';
 import semver from 'semver';
-import * as path from 'path';
-import * as fs from 'fs';
-import { PackageResults } from '../types';
-import { fileURLToPath } from 'node:url';
-
-const toPath = (urlOrPath: URL | string): string =>
-  urlOrPath instanceof URL ? fileURLToPath(urlOrPath) : urlOrPath;
-
-export async function readPackage(cwd: string): Promise<PackageResults> {
-  cwd = toPath(cwd) || process.cwd();
-  const filePath = path.resolve(cwd, 'package.json');
-
-  return JSON.parse(
-    await fs.promises.readFile(filePath, 'utf8'),
-  ) as PackageResults;
-}
+import readPackage, { NormalizedPackageJson } from 'read-pkg';
 
 export async function getPackage(cwd: string) {
-  let packageJson: PackageResults;
+  let packageJson: NormalizedPackageJson;
 
   try {
-    packageJson = await readPackage(cwd);
+    packageJson = await readPackage({ cwd });
   } catch (err) {
     const { code } = err as { code?: string };
     if (code === 'ENOENT') throw error(ErrorTypes.MISSING_PACKAGE);

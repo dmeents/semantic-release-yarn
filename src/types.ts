@@ -19,15 +19,3 @@ export interface PrepareContext extends Context {
 export interface LineJson {
   location?: string;
 }
-
-export interface PackageResults {
-  name?: string;
-  publishConfig?: {
-    registry?: string;
-  };
-  private?: boolean;
-  version?: string;
-  dependencies?: {
-    [key: string]: string;
-  };
-}

@@ -58,7 +58,8 @@
   },
   "dependencies": {
     "@semantic-release/error": "^3.0.0",
-    "execa": "^6.1.0",
+    "execa": "^5.1.1",
+    "read-pkg": "^5.2.0",
     "semver": "^7.3.8"
   }
 }
