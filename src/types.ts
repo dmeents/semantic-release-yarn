@@ -20,7 +20,7 @@ export interface LineJson {
   location?: string;
 }
 
-export interface ReadPackageResults {
+export interface PackageResults {
   name?: string;
   publishConfig?: {
     registry?: string;
