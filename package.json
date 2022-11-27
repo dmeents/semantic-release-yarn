@@ -1,6 +1,6 @@
 {
   "name": "@dmeents/semantic-release-yarn",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A plugin for semantic-release to support publishing to NPM with yarn@berry",
   "keywords": [
     "semantic-release",
