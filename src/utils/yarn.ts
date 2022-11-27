@@ -50,8 +50,8 @@ export class Yarn {
     }
   }
 
-  async install(): Promise<void> {
-    await this.useExeca('install');
+  async install(ignoreLock?: boolean): Promise<void> {
+    await this.useExeca(`install ${ignoreLock ? '--no-lockfile' : ''}`);
   }
 
   async pluginImportVersion(): Promise<void> {

@@ -2,6 +2,14 @@
   "name": "@dmeents/semantic-release-yarn",
   "version": "1.0.9",
   "description": "publish an npm package using yarn@berry",
+  "keywords": [
+    "semantic-release",
+    "yarn2",
+    "yarn3",
+    "yarn-berry",
+    "publish",
+    "version"
+  ],
   "main": "./.dist/index.js",
   "types": "./.dist/index.d.ts",
   "files": [
