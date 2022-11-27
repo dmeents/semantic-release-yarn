@@ -77,7 +77,8 @@ export class Yarn {
   }
 
   async publish(tag?: string): Promise<void> {
-    await this.useExeca(`npm publish ${tag ? tag : ''}`);
+    const tagToPublish = tag ? `--tag ${tag}` : '';
+    await this.useExeca(`npm publish ${tagToPublish}`);
   }
 
   async useExeca(args: string) {
