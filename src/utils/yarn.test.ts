@@ -36,11 +36,14 @@ describe('Yarn', () => {
   it('version', async () => {
     const cwd = tempy.directory();
     const packageJson = `${cwd}/package.json`;
+    const lockfile = `${cwd}/yarn.lock`;
 
     fs.writeFileSync(
       packageJson,
-      JSON.stringify({ version: '1.0.0', packageManager: 'yarn@3.1.0' }),
+      JSON.stringify({ version: '1.0.0', packageManager: 'yarn@3.3.0' }),
     );
+
+    fs.writeFileSync(lockfile, '');
 
     function getVersion(): string {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
