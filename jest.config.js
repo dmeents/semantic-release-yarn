@@ -1,8 +1,9 @@
-const { jest } = require("@dmeents/maestro");
+const { jest } = require('@dmeents/maestro');
 
 module.exports = {
   ...jest({
-    packageName: "semantic-release-yarn",
-    tsconfig: "./tsconfig.json",
+    packageName: 'semantic-release-yarn',
+    isNode: true,
+    tsconfig: 'tsconfig.json',
   }),
 };
