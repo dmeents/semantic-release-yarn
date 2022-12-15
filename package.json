@@ -44,7 +44,6 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.6",
     "@semantic-release/release-notes-generator": "^10.0.3",
-    "@suin/semantic-release-yarn": "^1.1.0",
     "@types/eslint": "^8",
     "@types/jest": "^29.2.3",
     "@types/prettier": "^2",
