@@ -3,7 +3,7 @@ module.exports = {
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
-    ['@suin/semantic-release-yarn', { npmPublish: true }],
+    ['@dmeents/semantic-release-yarn', { npmPublish: true }],
     [
       '@semantic-release/git',
       {
