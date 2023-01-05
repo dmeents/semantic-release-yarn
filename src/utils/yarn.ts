@@ -33,9 +33,21 @@ export class Yarn {
     await this.useExeca(`config set npmAuthToken ${npmAuthToken} --home`);
   }
 
+  async setNpmAuthIdent(npmAuthIdent: string): Promise<void> {
+    await this.useExeca(`config set npmAuthIdent ${npmAuthIdent} --home`);
+  }
+
   async getNpmAuthToken(): Promise<string | null> {
     const response = await this.useExeca(
       'config get npmAuthToken --json --no-redacted',
+    );
+
+    return JSON.parse(response.stdout) as string;
+  }
+
+  async getNpmAuthIdent(): Promise<string | null> {
+    const response = await this.useExeca(
+      'config get npmAuthIdent --json --no-redacted',
     );
 
     return JSON.parse(response.stdout) as string;
@@ -45,8 +57,10 @@ export class Yarn {
     try {
       await this.useExeca('npm whoami');
       return true;
-    } catch (e) {
-      return false;
+    } catch (e: any) {
+      // We can return true in case the response is 404, because it could just mean
+      // that there is no whoami endpoint (Azure DevOps for example)
+      return e.toString().indexOf('Response Code: 404 (Not Found)') >= 0;
     }
   }
 

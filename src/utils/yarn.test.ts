@@ -34,6 +34,25 @@ describe('Yarn', () => {
     expect(await yarn.authenticated()).toBe(false);
   });
 
+  it('setNpmAuthIdent', async () => {
+    const authIdent = '__dummy_auth_ident__';
+    await yarn.setNpmAuthIdent(authIdent);
+    expect(await yarn.getNpmAuthIdent()).toBe(authIdent);
+  });
+
+  it('with real NPM_AUTH_IDENT', async () => {
+    const NPM_AUTH_IDENT = process.env['NPM_AUTH_IDENT'] as string;
+    expect(NPM_AUTH_IDENT).toBeDefined();
+
+    await yarn.setNpmAuthIdent(NPM_AUTH_IDENT);
+    expect(await yarn.authenticated()).toBe(true);
+  });
+
+  it('invalid NPM_AUTH_IDENT', async () => {
+    await yarn.setNpmAuthIdent('invalid');
+    expect(await yarn.authenticated()).toBe(false);
+  });
+
   // TODO: can't run berry installs in tests because it would modify the yarn.lock in CI/CD
   // it('version', async () => {
   //   const cwd = tempy.directory();
