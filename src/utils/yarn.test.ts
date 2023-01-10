@@ -46,24 +46,26 @@ describe('Yarn', () => {
     expect(await yarn.getNpmAuthIdent()).toBe(authIdent);
   });
 
-  it('with real NPM_AUTH_IDENT', async () => {
-    await yarn.setNpmRegistryServer(
-      'https://pkgs.dev.azure.com/allido/allido/_packaging/semantic-release-yarn/npm/registry/',
-    );
-    const NPM_AUTH_IDENT = process.env['NPM_AUTH_IDENT'] as string;
-    expect(NPM_AUTH_IDENT).toBeDefined();
-
-    await yarn.setNpmAuthIdent(NPM_AUTH_IDENT);
-    expect(await yarn.authenticated()).toBe(true);
-  });
-
-  it('invalid NPM_AUTH_IDENT', async () => {
-    await yarn.setNpmRegistryServer(
-      'https://pkgs.dev.azure.com/allido/allido/_packaging/semantic-release-yarn/npm/registry/',
-    );
-    await yarn.setNpmAuthIdent('invalid');
-    expect(await yarn.authenticated()).toBe(false);
-  });
+  // TODO: azure registry doesn't have a /whoami route, need to find a better way to verify that \
+  //  authentication worked for the token
+  // it('with real NPM_AUTH_IDENT', async () => {
+  //   await yarn.setNpmRegistryServer(
+  //     'https://pkgs.dev.azure.com/allido/allido/_packaging/semantic-release-yarn/npm/registry/',
+  //   );
+  //   const NPM_AUTH_IDENT = process.env['NPM_AUTH_IDENT'] as string;
+  //   expect(NPM_AUTH_IDENT).toBeDefined();
+  //
+  //   await yarn.setNpmAuthIdent(NPM_AUTH_IDENT);
+  //   expect(await yarn.authenticated()).toBe(true);
+  // });
+  //
+  // it('invalid NPM_AUTH_IDENT', async () => {
+  //   await yarn.setNpmRegistryServer(
+  //     'https://pkgs.dev.azure.com/allido/allido/_packaging/semantic-release-yarn/npm/registry/',
+  //   );
+  //   await yarn.setNpmAuthIdent('invalid');
+  //   expect(await yarn.authenticated()).toBe(false);
+  // });
 
   // TODO: can't run berry installs in tests because it would modify the yarn.lock in CI/CD
   // it('version', async () => {

@@ -60,6 +60,7 @@ export class Yarn {
     } catch (e: any) {
       // We can return true in case the response is 404, because it could just mean
       // that there is no whoami endpoint (Azure DevOps for example)
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
       return e.toString().indexOf('Response Code: 404 (Not Found)') >= 0;
     }
   }
