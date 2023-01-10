@@ -47,10 +47,10 @@ the [semantic-release configuration file](https://github.com/semantic-release/se
 
 ### Environment Variables
 
-| Variable       | Required | Description                                                                                                                                                                                                                                                                       |
-|----------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| NPM_TOKEN      | ✅        | Required if the option useNpmToken is set to true. The npm token to use to publish to the registry. It must be created using two-factor authentication [auth-only](https://docs.npmjs.com/about-two-factor-authentication) because semantic-release won't work with anything else |
-| NPM_AUTH_IDENT | ✅        | Required if the option useNpmAuthIdent is set to true. The npm token to use to publish to the registry. This is helpful if working with AzureDevOps for example where there is no npmAuthToken                                                                                    |
+| Variable       | Required (one of) | Description                                                                                                                                                                                                                                                                           |
+|----------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| NPM_TOKEN      | ✅                 | **Required if** the option useNpmToken is set to true. The npm token to use to publish to the registry. It must be created using two-factor authentication [auth-only](https://docs.npmjs.com/about-two-factor-authentication) because semantic-release won't work with anything else |
+| NPM_AUTH_IDENT | ✅                 | **Required if** the option useNpmAuthIdent is set to true. The npm token to use to publish to the registry. This is helpful if working with AzureDevOps for example where there is no npmAuthToken                                                                                    |
 
 ### Configuration
 
@@ -94,7 +94,8 @@ also not allowing the plugin to update the version in the `package.json`.
 }
 ```
 
-Example if you want to use npmAuthIdent, for example, when wanting to publish to private Azure DevOps feed
+When wanting to publish to a registry that requires `npmAuthIdent`, for example to a private Azure DevOps feed, you need
+to tell the plugin to `useNpmAuthIdent`.
 
 ```json
 {
