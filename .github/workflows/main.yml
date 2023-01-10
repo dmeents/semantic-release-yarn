@@ -20,7 +20,6 @@ jobs:
           testSuite: ${{ matrix.suite }}
           npmToken: ${{ secrets.NPM_TOKEN }}
           codeCovSecret: ${{ secrets.CODECOV_TOKEN }}
-          foresightToken: ${{ secrets.FORESIGHT_TOKEN }}
 
   build:
     runs-on: ubuntu-latest
