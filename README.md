@@ -3,7 +3,6 @@
 [![npm](https://img.shields.io/npm/v/@dmeents/semantic-release-yarn?style=flat)](https://www.npmjs.com/package/@dmeents/semantic-release-yarn)
 [![npm](https://img.shields.io/npm/dw/@dmeents/semantic-release-yarn?style=flat)](https://www.npmjs.com/package/@dmeents/semantic-release-yarn)
 [![codecov](https://codecov.io/gh/dmeents/semantic-release-yarn/branch/main/graph/badge.svg?token=cKCa19pY6e)](https://codecov.io/gh/dmeents/semantic-release-yarn)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dmeents/semantic-release-yarn/main?style=flat)
 [![GitHub issues](https://img.shields.io/github/issues/dmeents/semantic-release-yarn?style=flat)](https://github.com/dmeents/semantic-release-yarn/issues)
 [![GitHub](https://img.shields.io/github/license/dmeents/semantic-release-yarn?style=flat)](https://github.com/dmeents/semantic-release-yarn/blob/main/LICENSE)
 
