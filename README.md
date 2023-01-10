@@ -10,7 +10,11 @@ A plugin for [semantic-release](https://github.com/semantic-release/semantic-rel
 to [npm](https://www.npmjs.com/)
 with [yarn@berry](https://github.com/yarnpkg/berry) and later. Inspired by [@suin's](https://github.com/suin)
 package of a [similar name](https://github.com/suin/semantic-release-yarn).
-Can also be configured to work with Azure DevOps by using npmAuthIdent instead of npmAuthToken.
+
+Some benefits to using this `yarn@berry` plugin include being able to change the `package.json` version without
+publishing the
+package to npm and being able to publish to different registries - including Azure DevOps by using npmAuthIdent instead
+of npmAuthToken.
 
 | Step               | Description                                                                                                |
 |--------------------|------------------------------------------------------------------------------------------------------------|
