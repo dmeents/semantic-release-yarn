@@ -9,10 +9,6 @@ jobs:
       matrix:
         suite: [ 'jest' ]
     steps:
-      - name: Collect Workflow Telemetry
-        uses: runforesight/foresight-workflow-kit-action@v1
-        with:
-          api_key: ${{ secrets.FORESIGHT_TOKEN }}
       - uses: actions/checkout@v3
       - name: Test Package
         uses: dmeents/maestro/src/github-actions/test-standard@main
@@ -25,10 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ test ]
     steps:
-      - name: Collect Workflow Telemetry
-        uses: runforesight/foresight-workflow-kit-action@v1
-        with:
-          api_key: ${{ secrets.FORESIGHT_TOKEN }}
       - uses: actions/checkout@v3
       - name: Build semantic-release-yarn
         uses: dmeents/maestro/src/github-actions/build-standard@main
@@ -40,10 +32,6 @@ jobs:
     needs: [ build ]
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Collect Workflow Telemetry
-        uses: runforesight/foresight-workflow-kit-action@v1
-        with:
-          api_key: ${{ secrets.FORESIGHT_TOKEN }}
       - uses: actions/checkout@v3
       - name: Get latest code
         run: git pull origin main
