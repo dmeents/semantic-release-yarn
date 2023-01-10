@@ -16,12 +16,14 @@ describe('Yarn', () => {
   });
 
   it('setNpmAuthToken', async () => {
+    await yarn.setNpmRegistryServer('https://registry.npmjs.org');
     const token = '__dummy_token__';
     await yarn.setNpmAuthToken(token);
     expect(await yarn.getNpmAuthToken()).toBe(token);
   });
 
   it('with real NPM_TOKEN', async () => {
+    await yarn.setNpmRegistryServer('https://registry.npmjs.org');
     const NPM_TOKEN = process.env['NPM_TOKEN'] as string;
     expect(NPM_TOKEN).toBeDefined();
 
@@ -30,17 +32,24 @@ describe('Yarn', () => {
   });
 
   it('invalid NPM_TOKEN', async () => {
+    await yarn.setNpmRegistryServer('https://registry.npmjs.org');
     await yarn.setNpmAuthToken('invalid');
     expect(await yarn.authenticated()).toBe(false);
   });
 
   it('setNpmAuthIdent', async () => {
+    await yarn.setNpmRegistryServer(
+      'https://pkgs.dev.azure.com/allido/allido/_packaging/semantic-release-yarn/npm/registry/',
+    );
     const authIdent = '__dummy_auth_ident__';
     await yarn.setNpmAuthIdent(authIdent);
     expect(await yarn.getNpmAuthIdent()).toBe(authIdent);
   });
 
   it('with real NPM_AUTH_IDENT', async () => {
+    await yarn.setNpmRegistryServer(
+      'https://pkgs.dev.azure.com/allido/allido/_packaging/semantic-release-yarn/npm/registry/',
+    );
     const NPM_AUTH_IDENT = process.env['NPM_AUTH_IDENT'] as string;
     expect(NPM_AUTH_IDENT).toBeDefined();
 
@@ -49,6 +58,9 @@ describe('Yarn', () => {
   });
 
   it('invalid NPM_AUTH_IDENT', async () => {
+    await yarn.setNpmRegistryServer(
+      'https://pkgs.dev.azure.com/allido/allido/_packaging/semantic-release-yarn/npm/registry/',
+    );
     await yarn.setNpmAuthIdent('invalid');
     expect(await yarn.authenticated()).toBe(false);
   });
