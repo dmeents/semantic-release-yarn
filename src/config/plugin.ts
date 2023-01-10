@@ -2,6 +2,8 @@ export interface PluginConfig {
   readonly npmPublish?: boolean;
   readonly changeVersion?: boolean;
   readonly tarballDir?: string | false;
+  readonly useNpmToken?: boolean;
+  readonly useNpmAuthIdent?: boolean;
 }
 
 function isNullableBoolean(
@@ -33,15 +35,21 @@ export const PluginConfig = {
     npmPublish,
     tarballDir,
     changeVersion,
+    useNpmToken,
+    useNpmAuthIdent
   }: PluginConfig): PluginConfig {
     isNullableBoolean(npmPublish, 'npmPublish');
     isNullableBoolean(changeVersion, 'packageVersion');
     isNullableString(tarballDir, 'tarballDir');
+    isNullableBoolean(useNpmToken, 'useNpmToken');
+    isNullableBoolean(useNpmAuthIdent, 'useNpmAuthIdent');
 
     return {
       npmPublish: npmPublish ?? true,
       tarballDir: tarballDir ?? '.',
       changeVersion: changeVersion ?? true,
+      useNpmToken: useNpmToken ?? true,
+      useNpmAuthIdent: useNpmAuthIdent ?? false,
     };
   },
 };

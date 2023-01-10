@@ -1,6 +1,6 @@
 import { PluginConfig } from './config/plugin';
 import { error, ErrorTypes } from './utils/error';
-import { getChannel, getNpmToken, getPackage } from './utils';
+import { getChannel, getNpmAuthIdent, getNpmToken, getPackage } from './utils';
 import { Context, PrepareContext } from './types';
 import { Yarn } from './utils/yarn';
 
@@ -28,6 +28,11 @@ export async function verifyConditions(
     return;
   }
 
+  if (config.useNpmToken == config.useNpmAuthIdent) {
+    ctx.logger.log('useNpmToken cannot be same value as useNpmAuthIdent');
+    return;
+  }
+
   if (registry) {
     ctx.logger.log(`set npmRegistry to ${registry}`);
     await yarn.setNpmRegistryServer(registry);
@@ -36,11 +41,19 @@ export async function verifyConditions(
     await yarn.setNpmRegistryServer('https://registry.npmjs.org');
   }
 
-  ctx.logger.log('set NPM_TOKEN to yarn config npmAuthToken');
-  await yarn.setNpmAuthToken(getNpmToken(ctx.env));
+  if (config.useNpmToken) {
+    ctx.logger.log('set NPM_TOKEN to yarn config npmAuthToken');
+    await yarn.setNpmAuthToken(getNpmToken(ctx.env));
 
-  ctx.logger.log('verify npm auth');
-  if (!(await yarn.authenticated())) throw error(ErrorTypes.INVALID_NPM_TOKEN);
+    ctx.logger.log('verify npm auth');
+    if (!(await yarn.authenticated())) throw error(ErrorTypes.INVALID_NPM_TOKEN);
+  } else {
+    ctx.logger.log('set NPM_AUTH_IDENT to yarn config npmAuthIdent');
+    await yarn.setNpmAuthIdent(getNpmAuthIdent(ctx.env));
+
+    ctx.logger.log('verify npm auth');
+    if (!(await yarn.authenticated())) throw error(ErrorTypes.INVALID_NPM_AUTH_IDENT);
+  }
 
   ctx.logger.log('install version plugin');
   await yarn.pluginImportVersion();

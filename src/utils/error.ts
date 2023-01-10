@@ -5,6 +5,7 @@ export enum ErrorTypes {
   MISSING_PACKAGE_NAME,
   MISSING_PACKAGE,
   INVALID_NPM_TOKEN,
+  INVALID_NPM_AUTH_IDENT,
 }
 
 export const error = (error: ErrorTypes): Error => {
@@ -16,13 +17,18 @@ export const error = (error: ErrorTypes): Error => {
       ) as Error;
     case ErrorTypes.MISSING_PACKAGE:
       return new SemanticReleaseError(
-        'Missing `name` in property `package.json`',
-        'MISSING_PACKAGE_NAME',
+        'Missing `package.json`',
+        'MISSING_PACKAGE',
       ) as Error;
     case ErrorTypes.INVALID_NPM_TOKEN:
       return new SemanticReleaseError(
-        'Missing `name` in property `package.json`',
-        'MISSING_PACKAGE_NAME',
+        'Invalid NPM_TOKEN value in environment variables',
+        'INVALID_NPM_TOKEN',
+      ) as Error;
+    case ErrorTypes.INVALID_NPM_AUTH_IDENT:
+      return new SemanticReleaseError(
+        'Invalid NPM_AUTH_IDENT value in environment variables',
+        'INVALID_NPM_AUTH_IDENT',
       ) as Error;
     default:
       return new SemanticReleaseError(error) as Error;
