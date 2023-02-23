@@ -25,7 +25,8 @@ export function getNpmToken(env: NodeJS.ProcessEnv): string {
 
 export function getNpmAuthIdent(env: NodeJS.ProcessEnv): string {
   const authIdent = env['NPM_AUTH_IDENT'];
-  if (typeof authIdent !== 'string') throw error(ErrorTypes.INVALID_NPM_AUTH_IDENT);
+  if (typeof authIdent !== 'string')
+    throw error(ErrorTypes.INVALID_NPM_AUTH_IDENT);
   return authIdent;
 }
 

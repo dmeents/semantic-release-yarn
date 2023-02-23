@@ -3,6 +3,8 @@ import { error, ErrorTypes } from './utils/error';
 import { getChannel, getNpmAuthIdent, getNpmToken, getPackage } from './utils';
 import { Context, PrepareContext } from './types';
 import { Yarn } from './utils/yarn';
+import yaml from 'js-yaml';
+import * as fs from 'fs';
 
 let verified = false;
 let prepared = false;
@@ -16,7 +18,15 @@ export async function verifyConditions(
 
   ctx.logger.log(`read ${ctx.cwd}/package.json`);
   const packageJson = await getPackage(ctx.cwd);
-  const registry = packageJson?.publishConfig?.registry as string;
+
+  ctx.logger.log(`read ${ctx.cwd}/yarnrc.yml`);
+
+  const yarnrc = yaml.load(
+    fs.readFileSync(`${ctx.cwd}/.yarnrc.yml`, 'utf8'),
+  ) as Record<string, string>;
+
+  const registryFromPackage = packageJson?.publishConfig?.registry as string;
+  const registryFromYarnrc = yarnrc?.npmPublishRegistry;
 
   if (packageJson.private === true) {
     ctx.logger.log('skipping since package is private');
@@ -33,9 +43,11 @@ export async function verifyConditions(
     return;
   }
 
-  if (registry) {
-    ctx.logger.log(`set npmRegistry to ${registry}`);
-    await yarn.setNpmRegistryServer(registry);
+  if (registryFromYarnrc || registryFromPackage) {
+    ctx.logger.log(
+      `set npmRegistry to ${registryFromYarnrc || registryFromPackage}`,
+    );
+    await yarn.setNpmRegistryServer(registryFromYarnrc || registryFromPackage);
   } else {
     ctx.logger.log('set npmRegistryServer: "https://registry.npmjs.org"');
     await yarn.setNpmRegistryServer('https://registry.npmjs.org');
@@ -46,13 +58,15 @@ export async function verifyConditions(
     await yarn.setNpmAuthToken(getNpmToken(ctx.env));
 
     ctx.logger.log('verify npm auth');
-    if (!(await yarn.authenticated())) throw error(ErrorTypes.INVALID_NPM_TOKEN);
+    if (!(await yarn.authenticated()))
+      throw error(ErrorTypes.INVALID_NPM_TOKEN);
   } else {
     ctx.logger.log('set NPM_AUTH_IDENT to yarn config npmAuthIdent');
     await yarn.setNpmAuthIdent(getNpmAuthIdent(ctx.env));
 
     ctx.logger.log('verify npm auth');
-    if (!(await yarn.authenticated())) throw error(ErrorTypes.INVALID_NPM_AUTH_IDENT);
+    if (!(await yarn.authenticated()))
+      throw error(ErrorTypes.INVALID_NPM_AUTH_IDENT);
   }
 
   ctx.logger.log('install version plugin');

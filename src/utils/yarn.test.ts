@@ -8,6 +8,17 @@ const YARN_RC_FILENAME = 'yarnrc.test.yaml';
 const yarn = new Yarn({ HOME, YARN_RC_FILENAME });
 
 describe('Yarn', () => {
+  const OLD_ENV = process.env;
+
+  beforeEach(() => {
+    jest.resetModules();
+    process.env = { ...OLD_ENV };
+  });
+
+  afterAll(() => {
+    process.env = OLD_ENV;
+  });
+
   it('setNpmRegistryServer', async () => {
     await yarn.setNpmRegistryServer('https://registry.npmjs.org');
     expect(await yarn.getNpmRegistryServer()).toBe(
@@ -38,9 +49,6 @@ describe('Yarn', () => {
   });
 
   it('setNpmAuthIdent', async () => {
-    await yarn.setNpmRegistryServer(
-      'https://pkgs.dev.azure.com/allido/allido/_packaging/semantic-release-yarn/npm/registry/',
-    );
     const authIdent = '__dummy_auth_ident__';
     await yarn.setNpmAuthIdent(authIdent);
     expect(await yarn.getNpmAuthIdent()).toBe(authIdent);
@@ -92,14 +100,21 @@ describe('Yarn', () => {
   it('yarnPackDryRun', async () => {
     const cwd = tempy.directory();
     const packageJson = `${cwd}/package.json`;
+
     fs.writeFileSync(
       packageJson,
-      JSON.stringify({ version: '1.0.0', packageManager: 'yarn@3.1.0' }),
+      JSON.stringify({
+        name: 'mypkg',
+        version: '1.0.0',
+        packageManager: 'yarn@3.4.1',
+        license: 'MIT',
+      }),
     );
 
     fs.mkdirSync(`${cwd}/lib`);
     fs.writeFileSync(`${cwd}/lib/index.js`, '');
     const yarn = new Yarn({ HOME, YARN_RC_FILENAME, cwd });
+
     const files = await yarn.packDryRun();
     expect(files).toMatchInlineSnapshot(`
       [
@@ -118,7 +133,8 @@ describe('Yarn', () => {
       JSON.stringify({
         name: 'mypkg',
         version: '1.0.0',
-        packageManager: 'yarn@3.1.0',
+        packageManager: 'yarn@3.4.1',
+        license: 'MIT',
       }),
     );
 
