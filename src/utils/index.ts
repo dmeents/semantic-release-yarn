@@ -1,6 +1,8 @@
 import { error, ErrorTypes } from './error';
 import semver from 'semver';
 import readPackage, { NormalizedPackageJson } from 'read-pkg';
+import yaml from 'js-yaml';
+import fs from 'fs';
 
 export async function getPackage(cwd: string) {
   let packageJson: NormalizedPackageJson;
@@ -15,6 +17,22 @@ export async function getPackage(cwd: string) {
 
   if (!packageJson.name) throw error(ErrorTypes.MISSING_PACKAGE_NAME);
   return packageJson;
+}
+
+export async function getYarnRc(cwd: string) {
+  let yarnRc: Record<string, string>;
+
+  try {
+    yarnRc = (await yaml.load(
+      fs.readFileSync(`${cwd}/.yarnrc.yml`, 'utf8'),
+    )) as Record<string, string>;
+  } catch (err) {
+    const { code } = err as { code?: string };
+    if (code === 'ENOENT') throw error(ErrorTypes.MISSING_PACKAGE);
+    throw new AggregateError([err]);
+  }
+
+  return yarnRc;
 }
 
 export function getNpmToken(env: NodeJS.ProcessEnv): string {

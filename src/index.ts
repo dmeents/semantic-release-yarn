@@ -1,10 +1,14 @@
 import { PluginConfig } from './config/plugin';
 import { error, ErrorTypes } from './utils/error';
-import { getChannel, getNpmAuthIdent, getNpmToken, getPackage } from './utils';
+import {
+  getChannel,
+  getNpmAuthIdent,
+  getNpmToken,
+  getPackage,
+  getYarnRc,
+} from './utils';
 import { Context, PrepareContext } from './types';
 import { Yarn } from './utils/yarn';
-import yaml from 'js-yaml';
-import * as fs from 'fs';
 
 let verified = false;
 let prepared = false;
@@ -20,10 +24,7 @@ export async function verifyConditions(
   const packageJson = await getPackage(ctx.cwd);
 
   ctx.logger.log(`read ${ctx.cwd}/yarnrc.yml`);
-
-  const yarnrc = yaml.load(
-    fs.readFileSync(`${ctx.cwd}/.yarnrc.yml`, 'utf8'),
-  ) as Record<string, string>;
+  const yarnrc = await getYarnRc(ctx.cwd);
 
   const registryFromPackage = packageJson?.publishConfig?.registry as string;
   const registryFromYarnrc = yarnrc?.npmPublishRegistry;

@@ -19,5 +19,16 @@ describe('utils', () => {
 
       expect(result.name).toEqual(mockPackage.name);
     });
+
+    it('should throw an error if the package.json does not exist', async () => {
+      const cwd = tempy.directory();
+      await expect(getPackage(cwd)).rejects.toThrow();
+    });
+
+    it('should throw an error if the package.json does not include a name', async () => {
+      const cwd = tempy.directory();
+      fs.writeFileSync(`${cwd}/package.json`, JSON.stringify({}));
+      await expect(getPackage(cwd)).rejects.toThrow();
+    });
   });
 });
