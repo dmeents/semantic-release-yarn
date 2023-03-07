@@ -54,8 +54,7 @@ the [semantic-release configuration file](https://github.com/semantic-release/se
 ### Configuration
 
 > Packages will be published to the registry specified in the package.json file, if none is found it will be look for
-> one
-> in the .yarnrc.yml file
+> one in the .yarnrc.yml file
 
 > Your repository must be using `yarn@berry` and have a `.yarnrc.yml` file.
 
