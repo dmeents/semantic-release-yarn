@@ -12,9 +12,8 @@ with [yarn@berry](https://github.com/yarnpkg/berry) and later. Inspired by [@sui
 package of a [similar name](https://github.com/suin/semantic-release-yarn).
 
 Some benefits to using this `yarn@berry` plugin include being able to change the `package.json` version without
-publishing the
-package to npm and being able to publish to different registries - including Azure DevOps by using npmAuthIdent instead
-of npmAuthToken.
+publishing the package to npm and being able to publish to different registries - including Azure DevOps by using
+npmAuthIdent instead of npmAuthToken.
 
 | Step               | Description                                                                                                |
 |--------------------|------------------------------------------------------------------------------------------------------------|
@@ -54,7 +53,9 @@ the [semantic-release configuration file](https://github.com/semantic-release/se
 
 ### Configuration
 
-> Packages will be published to the registry specified in the package.json file
+> Packages will be published to the registry specified in the package.json file, if none is found it will be look for
+> one
+> in the .yarnrc.yml file
 
 > Your repository must be using `yarn@berry` and have a `.yarnrc.yml` file.
 
