@@ -23,10 +23,9 @@ export async function getYarnRc(cwd: string) {
   let yarnRc: Record<string, string>;
 
   try {
-    yarnRc = (await yaml.load(fs.readFileSync(cwd, 'utf8'))) as Record<
-      string,
-      string
-    >;
+    yarnRc = (await yaml.load(
+      fs.readFileSync(`${cwd}/.yarnrc.yml`, 'utf8'),
+    )) as Record<string, string>;
   } catch (err) {
     const { code } = err as { code?: string };
     if (code === 'ENOENT') throw error(ErrorTypes.MISSING_PACKAGE);

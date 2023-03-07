@@ -1,6 +1,6 @@
 import tempy from 'tempy';
 import * as fs from 'fs';
-import { getPackage } from './index';
+import { getPackage, getYarnRc } from './index';
 
 describe('utils', () => {
   describe('getPackage', () => {
@@ -29,6 +29,21 @@ describe('utils', () => {
       const cwd = tempy.directory();
       fs.writeFileSync(`${cwd}/package.json`, JSON.stringify({}));
       await expect(getPackage(cwd)).rejects.toThrow();
+    });
+  });
+
+  describe('getYarnRc', () => {
+    it('should return the .yarnrc.yml if it exists', async () => {
+      const cwd = tempy.directory();
+
+      const mockYarnRc = {
+        npmPublishRegistry: 'https://registry.npmjs.org',
+      };
+
+      fs.writeFileSync(`${cwd}/.yarnrc.yml`, JSON.stringify(mockYarnRc));
+      const result = await getYarnRc(cwd);
+
+      expect(result.npmPublishRegistry).toEqual(mockYarnRc.npmPublishRegistry);
     });
   });
 });
