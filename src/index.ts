@@ -23,7 +23,7 @@ export async function verifyConditions(
   ctx.logger.log(`read ${ctx.cwd}/package.json`);
   const packageJson = await getPackage(ctx.cwd);
 
-  ctx.logger.log(`read ${ctx.cwd}/yarnrc.yml`);
+  ctx.logger.log(`read ${ctx.cwd}/.yarnrc.yml`);
   const yarnrc = await getYarnRc(ctx.cwd);
 
   const registryFromPackage = packageJson?.publishConfig?.registry as string;
