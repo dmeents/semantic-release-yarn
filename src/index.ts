@@ -22,15 +22,23 @@ export async function verifyConditions(
 
   ctx.logger.log(`read ${ctx.cwd}/package.json`);
   const packageJson = await getPackage(ctx.cwd);
-
-  ctx.logger.log(`read ${ctx.cwd}/.yarnrc.yml`);
-  const yarnrc = await getYarnRc(ctx.cwd);
-
   const registryFromPackage = packageJson?.publishConfig?.registry as string;
-  const registryFromYarnrc = yarnrc?.npmPublishRegistry;
 
-  if (packageJson.private === true) {
-    ctx.logger.log('skipping since package is private');
+  let yarnrc: Record<string, string> = {};
+  let registryFromYarnrc = '';
+
+  if (!registryFromPackage) {
+    ctx.logger.log(`no registry found in package.json, checking .yarnrc.yml`);
+    ctx.logger.log(`read ${ctx.cwd}/.yarnrc.yml`);
+    yarnrc = await getYarnRc(ctx.cwd);
+    registryFromYarnrc = yarnrc?.npmPublishRegistry;
+  }
+
+  if (
+    packageJson.private === true ||
+    yarnrc.npmPublishAccess === 'restricted'
+  ) {
+    ctx.logger.log('skipping since registry is private');
     return;
   }
 

@@ -3,6 +3,7 @@ import SemanticReleaseError from '@semantic-release/error';
 
 export enum ErrorTypes {
   MISSING_PACKAGE_NAME,
+  MISSING_YARNRC,
   MISSING_PACKAGE,
   INVALID_NPM_TOKEN,
   INVALID_NPM_AUTH_IDENT,
@@ -14,6 +15,11 @@ export const error = (error: ErrorTypes): Error => {
       return new SemanticReleaseError(
         'Missing `name` in property `package.json`',
         'MISSING_PACKAGE_NAME',
+      ) as Error;
+    case ErrorTypes.MISSING_YARNRC:
+      return new SemanticReleaseError(
+        'Missing `.yarnrc.yml`',
+        'MISSING_YARNRC',
       ) as Error;
     case ErrorTypes.MISSING_PACKAGE:
       return new SemanticReleaseError(

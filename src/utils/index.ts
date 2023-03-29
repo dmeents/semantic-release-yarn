@@ -28,7 +28,7 @@ export async function getYarnRc(cwd: string) {
     )) as Record<string, string>;
   } catch (err) {
     const { code } = err as { code?: string };
-    if (code === 'ENOENT') throw error(ErrorTypes.MISSING_PACKAGE);
+    if (code === 'ENOENT') throw error(ErrorTypes.MISSING_YARNRC);
     throw new AggregateError([err]);
   }
 
@@ -43,12 +43,15 @@ export function getNpmToken(env: NodeJS.ProcessEnv): string {
 
 export function getNpmAuthIdent(env: NodeJS.ProcessEnv): string {
   const authIdent = env['NPM_AUTH_IDENT'];
-  if (typeof authIdent !== 'string')
+
+  if (typeof authIdent !== 'string') {
     throw error(ErrorTypes.INVALID_NPM_AUTH_IDENT);
+  }
+
   return authIdent;
 }
 
-export const getChannel = (channel: string) => {
+export const getChannel = (channel?: string) => {
   if (!channel) return 'latest';
   return semver.validRange(channel) ? `release-${channel}` : channel;
 };

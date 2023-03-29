@@ -1,6 +1,12 @@
 import tempy from 'tempy';
 import * as fs from 'fs';
-import { getPackage, getYarnRc } from './index';
+import {
+  getChannel,
+  getNpmAuthIdent,
+  getNpmToken,
+  getPackage,
+  getYarnRc,
+} from './index';
 
 describe('utils', () => {
   describe('getPackage', () => {
@@ -44,6 +50,41 @@ describe('utils', () => {
       const result = await getYarnRc(cwd);
 
       expect(result.npmPublishRegistry).toEqual(mockYarnRc.npmPublishRegistry);
+    });
+  });
+
+  describe('getNpmToken', () => {
+    it('should return the npm token if it exists in the environment', () => {
+      const mockEnv = { NPM_TOKEN: '1234567890' };
+      const result = getNpmToken(mockEnv);
+      expect(result).toEqual(mockEnv.NPM_TOKEN);
+    });
+  });
+
+  describe('getNpmAuthIdent', () => {
+    it('should return the npm auth ident if it exists in the environment', () => {
+      const mockEnv = { NPM_AUTH_IDENT: '1234567890' };
+      const result = getNpmAuthIdent(mockEnv);
+      expect(result).toEqual(mockEnv.NPM_AUTH_IDENT);
+    });
+  });
+
+  describe('getChannel', () => {
+    it('should return "latest" if there is no channel set', () => {
+      const result = getChannel();
+      expect(result).toEqual('latest');
+    });
+
+    it('should return a channel preceded by "release-" if there is a valid channel set', () => {
+      const result = getChannel('1.0.1');
+      expect(result).toEqual('release-1.0.1');
+    });
+
+    // TODO: this seems like weird behavior, if it's not a valid semver range, it should throw
+    it('should return the provided channel if it is not a valid semver range', () => {
+      const channel = '-';
+      const result = getChannel(channel);
+      expect(result).toEqual(channel);
     });
   });
 });
