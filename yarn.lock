@@ -416,18 +416,18 @@ __metadata:
   linkType: hard
 
 "@dmeents/maestro@npm:^1.6.42":
-  version: 1.6.44
-  resolution: "@dmeents/maestro@npm:1.6.44"
-  checksum: 71b894d9060f2e94d03c8ad13d4fd47bd8d1f5f4f760d412abca36ecb701bf8bfd341e5f3448042da219360fadbbd64c735639b61ec17f45059865401f398f8d
+  version: 1.6.45
+  resolution: "@dmeents/maestro@npm:1.6.45"
+  checksum: c2630c142736fba01d4d5add4899d9ab1ffdef139006bef213a0fcb1b83d050788d3c45bcfd72ff498108ff40a0b5d69f31ab77fc34f3e51b34cb9237d1d7481
   languageName: node
   linkType: hard
 
-"@dmeents/semantic-release-yarn@1.1.4, @dmeents/semantic-release-yarn@workspace:.":
+"@dmeents/semantic-release-yarn@1.1.5, @dmeents/semantic-release-yarn@workspace:.":
   version: 0.0.0-use.local
   resolution: "@dmeents/semantic-release-yarn@workspace:."
   dependencies:
     "@dmeents/maestro": ^1.6.42
-    "@dmeents/semantic-release-yarn": 1.1.4
+    "@dmeents/semantic-release-yarn": 1.1.5
     "@semantic-release/commit-analyzer": ^9.0.2
     "@semantic-release/error": ^3.0.0
     "@semantic-release/git": ^10.0.1
@@ -1496,12 +1496,12 @@ __metadata:
   linkType: hard
 
 "@types/eslint@npm:^8.21.1":
-  version: 8.21.3
-  resolution: "@types/eslint@npm:8.21.3"
+  version: 8.37.0
+  resolution: "@types/eslint@npm:8.37.0"
   dependencies:
     "@types/estree": "*"
     "@types/json-schema": "*"
-  checksum: 80e0b5ca9ffb77bff19d01df08b93a99a6b44cad4c40e6450733ead6f1bc44b5514e7d28c3b0ad6304aeb01d690ee7ca89250729a9373551b7e587c6dbb41d7f
+  checksum: 06d3b3fba12004294591b5c7a52e3cec439472195da54e096076b1f2ddfbb8a445973b9681046dd530a6ac31eca502f635abc1e3ce37d03513089358e6f822ee
   languageName: node
   linkType: hard
 
