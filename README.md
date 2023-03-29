@@ -53,8 +53,10 @@ the [semantic-release configuration file](https://github.com/semantic-release/se
 
 ### Configuration
 
-> Packages will be published to the registry specified in the package.json file, if none is found it will be look for
-> one in the .yarnrc.yml file
+> Packages will be published to the registry specified in the package.json file first, then fall back to the .yarnrc.yml
+> file. If you're using _semantic-release-yarn_ with a monorepo configuration,
+> like [semantic-release-monorepo](https://github.com/pmowrer/semantic-release-monorepo), you must specify
+> the registry in each packages package.json file.
 
 > Your repository must be using `yarn@berry` and have a `.yarnrc.yml` file.
 
