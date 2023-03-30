@@ -22,8 +22,13 @@ export async function verifyConditions(
 
   ctx.logger.log(`read ${ctx.cwd}/package.json`);
   const packageJson = await getPackage(ctx.cwd);
-  const registryFromPackage = packageJson?.publishConfig?.registry as string;
 
+  if (config.npmPublish === false) {
+    ctx.logger.log('skipping registry configuration since npmPublish is false');
+    return;
+  }
+
+  const registryFromPackage = packageJson?.publishConfig?.registry as string;
   let yarnrc: Record<string, string> = {};
   let registryFromYarnrc = '';
 
@@ -39,11 +44,6 @@ export async function verifyConditions(
     yarnrc.npmPublishAccess === 'restricted'
   ) {
     ctx.logger.log('skipping since registry is private');
-    return;
-  }
-
-  if (config.npmPublish === false) {
-    ctx.logger.log('skipping since npmPublish is false');
     return;
   }
 
