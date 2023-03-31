@@ -9,9 +9,12 @@ import {
 } from './utils';
 import { Context, PrepareContext } from './types';
 import { Yarn } from './utils/yarn';
+import readPkg from 'read-pkg';
 
 let verified = false;
 let prepared = false;
+let packageJson: readPkg.NormalizedPackageJson;
+let yarnrc: Record<string, string> = {};
 const yarn = new Yarn();
 
 export async function verifyConditions(
@@ -21,15 +24,14 @@ export async function verifyConditions(
   config = PluginConfig.normalize(config);
 
   ctx.logger.log(`read ${ctx.cwd}/package.json`);
-  const packageJson = await getPackage(ctx.cwd);
+  packageJson = await getPackage(ctx.cwd);
 
-  if (config.npmPublish === false) {
+  if (!config.npmPublish) {
     ctx.logger.log('skipping registry configuration since npmPublish is false');
     return;
   }
 
   const registryFromPackage = packageJson?.publishConfig?.registry as string;
-  let yarnrc: Record<string, string> = {};
   let registryFromYarnrc = '';
 
   if (!registryFromPackage) {
@@ -85,7 +87,6 @@ export async function verifyConditions(
 }
 
 export async function prepare(config: PluginConfig, ctx: PrepareContext) {
-  ctx.logger.log(`read ${ctx.cwd}/package.json`);
   config = PluginConfig.normalize(config);
 
   if (config.changeVersion) {
@@ -123,8 +124,6 @@ export async function publish(config: PluginConfig, ctx: PrepareContext) {
     return;
   }
 
-  ctx.logger.log(`read ${ctx.cwd}/package.json`);
-  const packageJson = await getPackage(ctx.cwd);
   const { version } = ctx.nextRelease;
 
   ctx.logger.log(`get channel to publish to`);
