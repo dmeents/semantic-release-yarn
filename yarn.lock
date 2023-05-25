@@ -416,9 +416,9 @@ __metadata:
   linkType: hard
 
 "@dmeents/maestro@npm:^1.6.42":
-  version: 1.6.45
-  resolution: "@dmeents/maestro@npm:1.6.45"
-  checksum: c2630c142736fba01d4d5add4899d9ab1ffdef139006bef213a0fcb1b83d050788d3c45bcfd72ff498108ff40a0b5d69f31ab77fc34f3e51b34cb9237d1d7481
+  version: 1.6.46
+  resolution: "@dmeents/maestro@npm:1.6.46"
+  checksum: f89d6b430db3c0bed0661a7529d28698f5f3b4d4110ce98f8ded976bc4d5fee631ac2686187e2f64769eb38d2eac5dca05297c3f3804ffb5b2ddbe603c6002a1
   languageName: node
   linkType: hard
 
