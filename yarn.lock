@@ -1769,9 +1769,9 @@ __metadata:
   linkType: hard
 
 "@types/semantic-release__error@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "@types/semantic-release__error@npm:3.0.1"
-  checksum: dc117c9a262da7d937dbc90fee0275de4a2e1ae1255f6130bc8404f51c354812b0dc5c61380701d8141bb9a09cf1c9f524d055c77145a469c1797839e4e1dcde
+  version: 3.0.2
+  resolution: "@types/semantic-release__error@npm:3.0.2"
+  checksum: ee40087cf9ec67297cc5d429bc4bfc4aff9def8edbf5661faf56af86e86d14efc050b03361faeb6e9ec5eb7dbc9512c4d4b6ce22fb0980e1ba0203045e2ccf7a
   languageName: node
   linkType: hard
 
