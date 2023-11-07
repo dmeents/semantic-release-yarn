@@ -1744,9 +1744,9 @@ __metadata:
   linkType: hard
 
 "@types/js-yaml@npm:^4":
-  version: 4.0.8
-  resolution: "@types/js-yaml@npm:4.0.8"
-  checksum: a5a77a5a1eac7e7fb667156c251c2b947ca4ddfdda570726369dd50bd5b2b1d0da2d0fb4273d1b10aa1782406d7b3da8923d957df4fb89dbfa1db06f43297de2
+  version: 4.0.9
+  resolution: "@types/js-yaml@npm:4.0.9"
+  checksum: e5e5e49b5789a29fdb1f7d204f82de11cb9e8f6cb24ab064c616da5d6e1b3ccfbf95aa5d1498a9fbd3b9e745564e69b4a20b6c530b5a8bbb2d4eb830cda9bc69
   languageName: node
   linkType: hard
 
@@ -1811,9 +1811,9 @@ __metadata:
   linkType: hard
 
 "@types/semver@npm:^7.3.12, @types/semver@npm:^7.3.13, @types/semver@npm:^7.5.0":
-  version: 7.5.4
-  resolution: "@types/semver@npm:7.5.4"
-  checksum: 120c0189f6fec5f2d12d0d71ac8a4cfa952dc17fa3d842e8afddb82bba8828a4052f8799c1653e2b47ae1977435f38e8985658fde971905ce5afb8e23ee97ecf
+  version: 7.5.5
+  resolution: "@types/semver@npm:7.5.5"
+  checksum: 533e6c93d1262d65f449423d94a445f7f3db0672e7429f21b6a1636d6051dbab3a2989ddcda9b79c69bb37830931d09fc958a65305a891357f5cea3257c297f5
   languageName: node
   linkType: hard
 
