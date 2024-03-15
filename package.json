@@ -43,7 +43,7 @@
     "@dmeents/semantic-release-yarn": "1.1.11",
     "@semantic-release/commit-analyzer": "^11.0.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.0.0",
+    "@semantic-release/github": "^10.0.0",
     "@semantic-release/release-notes-generator": "^12.0.0",
     "@types/eslint": "^8.21.1",
     "@types/jest": "^29.4.0",
