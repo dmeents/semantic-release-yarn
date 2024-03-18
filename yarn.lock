@@ -1414,23 +1414,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/commit-analyzer@npm:^11.0.0":
-  version: 11.1.0
-  resolution: "@semantic-release/commit-analyzer@npm:11.1.0"
-  dependencies:
-    conventional-changelog-angular: ^7.0.0
-    conventional-commits-filter: ^4.0.0
-    conventional-commits-parser: ^5.0.0
-    debug: ^4.0.0
-    import-from-esm: ^1.0.3
-    lodash-es: ^4.17.21
-    micromatch: ^4.0.2
-  peerDependencies:
-    semantic-release: ">=20.1.0"
-  checksum: 773e855bfee6d917f4145e1c85940cdf028d00efa197dabea4a86b8d31c6d5609767da147c93ec61d4cc36b74b1c10703482cc15ecab9c468c52e4e177863262
-  languageName: node
-  linkType: hard
-
 "@semantic-release/commit-analyzer@npm:^12.0.0":
   version: 12.0.0
   resolution: "@semantic-release/commit-analyzer@npm:12.0.0"
@@ -7861,10 +7844,10 @@ __metadata:
   linkType: hard
 
 "semantic-release@npm:^23.0.0":
-  version: 23.0.4
-  resolution: "semantic-release@npm:23.0.4"
+  version: 23.0.5
+  resolution: "semantic-release@npm:23.0.5"
   dependencies:
-    "@semantic-release/commit-analyzer": ^11.0.0
+    "@semantic-release/commit-analyzer": ^12.0.0
     "@semantic-release/error": ^4.0.0
     "@semantic-release/github": ^10.0.0
     "@semantic-release/npm": ^12.0.0
@@ -7895,7 +7878,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: f1647554b4c6b1ae4699393ee0358b39b1ea86e4091786c72011caa84406e37c0fd2594fddadc8902b58e059703bf1e9440ee803d4e9d9569235b10bf99e1618
+  checksum: ee2c0fb6dd1cf3821f3f36495ee999f937a524f927c7f1450579b2eedc0d2d2a935359f4ee62d3cb32344e2708d750255b0c84f0f4ff9291876c5926c3ead1cc
   languageName: node
   linkType: hard
 
