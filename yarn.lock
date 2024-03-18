@@ -463,7 +463,7 @@ __metadata:
   dependencies:
     "@dmeents/maestro": ^1.6.42
     "@dmeents/semantic-release-yarn": 1.1.11
-    "@semantic-release/commit-analyzer": ^11.0.0
+    "@semantic-release/commit-analyzer": ^12.0.0
     "@semantic-release/error": ^3.0.0
     "@semantic-release/git": ^10.0.1
     "@semantic-release/github": ^10.0.0
@@ -1428,6 +1428,23 @@ __metadata:
   peerDependencies:
     semantic-release: ">=20.1.0"
   checksum: 773e855bfee6d917f4145e1c85940cdf028d00efa197dabea4a86b8d31c6d5609767da147c93ec61d4cc36b74b1c10703482cc15ecab9c468c52e4e177863262
+  languageName: node
+  linkType: hard
+
+"@semantic-release/commit-analyzer@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "@semantic-release/commit-analyzer@npm:12.0.0"
+  dependencies:
+    conventional-changelog-angular: ^7.0.0
+    conventional-commits-filter: ^4.0.0
+    conventional-commits-parser: ^5.0.0
+    debug: ^4.0.0
+    import-from-esm: ^1.0.3
+    lodash-es: ^4.17.21
+    micromatch: ^4.0.2
+  peerDependencies:
+    semantic-release: ">=20.1.0"
+  checksum: 6cfc80b5fdacb79ce0a973f4f1a498e935e75941cca8e45765c8f8ee352f377cdbdc4729f83d47c9130f229bae2cee9bd62f27463adede4e38d5648deecd0e5f
   languageName: node
   linkType: hard
 
