@@ -1512,26 +1512,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/release-notes-generator@npm:^12.0.0":
-  version: 12.1.0
-  resolution: "@semantic-release/release-notes-generator@npm:12.1.0"
-  dependencies:
-    conventional-changelog-angular: ^7.0.0
-    conventional-changelog-writer: ^7.0.0
-    conventional-commits-filter: ^4.0.0
-    conventional-commits-parser: ^5.0.0
-    debug: ^4.0.0
-    get-stream: ^7.0.0
-    import-from-esm: ^1.0.3
-    into-stream: ^7.0.0
-    lodash-es: ^4.17.21
-    read-pkg-up: ^11.0.0
-  peerDependencies:
-    semantic-release: ">=20.1.0"
-  checksum: 7e177c77a66091364ffc419ba5deba0d8e1b58857da40fbd34712e8dbe5a8b18def19eba5c5cbefc396402573c334de789683ee276eee82edb9b347d6c17f71c
-  languageName: node
-  linkType: hard
-
 "@semantic-release/release-notes-generator@npm:^13.0.0":
   version: 13.0.0
   resolution: "@semantic-release/release-notes-generator@npm:13.0.0"
@@ -7866,14 +7846,14 @@ __metadata:
   linkType: hard
 
 "semantic-release@npm:^23.0.0":
-  version: 23.0.5
-  resolution: "semantic-release@npm:23.0.5"
+  version: 23.0.6
+  resolution: "semantic-release@npm:23.0.6"
   dependencies:
     "@semantic-release/commit-analyzer": ^12.0.0
     "@semantic-release/error": ^4.0.0
     "@semantic-release/github": ^10.0.0
     "@semantic-release/npm": ^12.0.0
-    "@semantic-release/release-notes-generator": ^12.0.0
+    "@semantic-release/release-notes-generator": ^13.0.0
     aggregate-error: ^5.0.0
     cosmiconfig: ^9.0.0
     debug: ^4.0.0
@@ -7900,7 +7880,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: ee2c0fb6dd1cf3821f3f36495ee999f937a524f927c7f1450579b2eedc0d2d2a935359f4ee62d3cb32344e2708d750255b0c84f0f4ff9291876c5926c3ead1cc
+  checksum: f1232ffaeac4c37abde17affa9a981a014f78cab666073adaa41a58eb947ad6b1a508f03412998ce0ca3ffb619ccb26091420f983ea339804766c873cefadd63
   languageName: node
   linkType: hard
 
