@@ -1291,14 +1291,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-paginate-rest@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "@octokit/plugin-paginate-rest@npm:10.0.0"
+"@octokit/openapi-types@npm:^21.0.0":
+  version: 21.2.0
+  resolution: "@octokit/openapi-types@npm:21.2.0"
+  checksum: d0d461f50b66b0919c679d58349dfcf3e5fd3a9476af4fcfa69b09dd832b267154bcf356615af81ae3f86747a54a57708790a986c9f7bd4016d861feb85b899c
+  languageName: node
+  linkType: hard
+
+"@octokit/plugin-paginate-rest@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "@octokit/plugin-paginate-rest@npm:11.0.0"
   dependencies:
-    "@octokit/types": ^12.6.0
+    "@octokit/types": ^13.0.0
   peerDependencies:
     "@octokit/core": ">=6"
-  checksum: cbe3c7e518df8c536c454e71de9456fd242d106bd9ee4b483bfe4bda18db859aaf011826416a57a44dd15bb70de4cde26abe086a09587ee78adc73c80469d44c
+  checksum: 9ec422c9a2566739b2b7058b15e111c2a50cbaf8488e54cd13a4a99f2d4f976906a46dfc911998c3926c10894312324a2f548c0ca75444c358f515eac5fe555b
   languageName: node
   linkType: hard
 
@@ -1363,6 +1370,15 @@ __metadata:
   dependencies:
     "@octokit/openapi-types": ^20.0.0
   checksum: 850235f425584499a2266d5c585c1c2462ae11e25c650567142f3342cb9ce589c8c8fed87705811ca93271fd28c68e1fa77b88b67b97015d7b63d269fa46ed05
+  languageName: node
+  linkType: hard
+
+"@octokit/types@npm:^13.0.0":
+  version: 13.1.0
+  resolution: "@octokit/types@npm:13.1.0"
+  dependencies:
+    "@octokit/openapi-types": ^21.0.0
+  checksum: 205a190af4d02a31545ea22e1c4d75213d016eb32fba0e82baac06672f7d6fb65c045ca8ff5e4646095b6649d10f09e8734e7034585751ebbe32988be3426828
   languageName: node
   linkType: hard
 
@@ -1464,11 +1480,11 @@ __metadata:
   linkType: hard
 
 "@semantic-release/github@npm:^10.0.0":
-  version: 10.0.2
-  resolution: "@semantic-release/github@npm:10.0.2"
+  version: 10.0.3
+  resolution: "@semantic-release/github@npm:10.0.3"
   dependencies:
     "@octokit/core": ^6.0.0
-    "@octokit/plugin-paginate-rest": ^10.0.0
+    "@octokit/plugin-paginate-rest": ^11.0.0
     "@octokit/plugin-retry": ^7.0.0
     "@octokit/plugin-throttling": ^9.0.0
     "@semantic-release/error": ^4.0.0
@@ -1485,7 +1501,7 @@ __metadata:
     url-join: ^5.0.0
   peerDependencies:
     semantic-release: ">=20.1.0"
-  checksum: fbca028e248f4386b71cc41e1e2477b562b77be228d19db7c70e1ddd984a74df5c7f9c79f9b3decb9791eaef3a78de501a05ea3c9d1a3c581d8ed509ffc889b6
+  checksum: 177ea0b978c3abff02689e409133ed952396f04829d4535a0634856d0a951bf74de1f0adf1151197d9022f97812c0f89166538b6754c623f5b04a2df3fb64f47
   languageName: node
   linkType: hard
 
@@ -3527,8 +3543,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-jest@npm:^28.0.0":
-  version: 28.0.0
-  resolution: "eslint-plugin-jest@npm:28.0.0"
+  version: 28.2.0
+  resolution: "eslint-plugin-jest@npm:28.2.0"
   dependencies:
     "@typescript-eslint/utils": ^6.0.0
   peerDependencies:
@@ -3540,7 +3556,7 @@ __metadata:
       optional: true
     jest:
       optional: true
-  checksum: 4685a6fccd74364c0f03101215c9e80d95124dd43ed4786b6fcbe978f6a3dfd133cd79fe890d957a613083a34825b1f86a8f8b565ca24a053fe2457ef093959c
+  checksum: 260e7ea98e95365d4f55227cf6cae02329d902b26cc10212192572fd32e1c6ac339ad961e3304f3524234cec2963f0b9c1b83dafa14b57b7b347122a69897e39
   languageName: node
   linkType: hard
 
