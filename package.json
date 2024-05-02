@@ -37,7 +37,7 @@
     "test:coverage": "jest --coverage -ci --bail --silent --forceExit --passWithNoTests",
     "release": "semantic-release"
   },
-  "packageManager": "yarn@3.8.1",
+  "packageManager": "yarn@3.8.2",
   "devDependencies": {
     "@dmeents/maestro": "^1.6.42",
     "@dmeents/semantic-release-yarn": "1.1.11",
