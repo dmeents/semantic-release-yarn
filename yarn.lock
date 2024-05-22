@@ -1494,8 +1494,8 @@ __metadata:
   linkType: hard
 
 "@semantic-release/github@npm:^10.0.0":
-  version: 10.0.4
-  resolution: "@semantic-release/github@npm:10.0.4"
+  version: 10.0.5
+  resolution: "@semantic-release/github@npm:10.0.5"
   dependencies:
     "@octokit/core": ^6.0.0
     "@octokit/plugin-paginate-rest": ^11.0.0
@@ -1515,7 +1515,7 @@ __metadata:
     url-join: ^5.0.0
   peerDependencies:
     semantic-release: ">=20.1.0"
-  checksum: 396f36b5fe42aa01292ef9981625a13cf2f211141ac770447140e4a1afb569198c935737b3fc1eadef9089da192589f096a3eb20a9ffe3d69a7f0b845a3ce1b6
+  checksum: b05425aa30a4483bed9ead03569647a0c8c19cbd73a6cbb84ee50b0872fd0d48d6d126030454129aa13c4afa0cbb4bb39a49d09f4694918f727997c8fad3fc0f
   languageName: node
   linkType: hard
 
