@@ -467,7 +467,7 @@ __metadata:
     "@semantic-release/error": ^3.0.0
     "@semantic-release/git": ^10.0.1
     "@semantic-release/github": ^10.0.0
-    "@semantic-release/release-notes-generator": ^13.0.0
+    "@semantic-release/release-notes-generator": ^14.0.0
     "@types/eslint": ^8.21.1
     "@types/jest": ^29.4.0
     "@types/js-yaml": ^4
@@ -1577,6 +1577,26 @@ __metadata:
   peerDependencies:
     semantic-release: ">=20.1.0"
   checksum: 9b764aa35829a645716bd4358d56a03f4f82a7c5fdd7ea694c7d9aef36a2a7be6650eb8f76950848e97bb335ae8f895e627510a45084842dfaf60a9fdd8cbf5f
+  languageName: node
+  linkType: hard
+
+"@semantic-release/release-notes-generator@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "@semantic-release/release-notes-generator@npm:14.0.0"
+  dependencies:
+    conventional-changelog-angular: ^8.0.0
+    conventional-changelog-writer: ^8.0.0
+    conventional-commits-filter: ^5.0.0
+    conventional-commits-parser: ^6.0.0
+    debug: ^4.0.0
+    get-stream: ^7.0.0
+    import-from-esm: ^1.0.3
+    into-stream: ^7.0.0
+    lodash-es: ^4.17.21
+    read-pkg-up: ^11.0.0
+  peerDependencies:
+    semantic-release: ">=20.1.0"
+  checksum: 1e5e4efe531d070d4bcf3b7ab787e54f86eedd136d09a8d23b9601f9a9400319095f39de963ce92207435729332314c3b50553d7378602dd15138a770c2821a4
   languageName: node
   linkType: hard
 
