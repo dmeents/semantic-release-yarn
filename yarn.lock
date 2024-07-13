@@ -464,7 +464,7 @@ __metadata:
     "@dmeents/maestro": ^1.6.42
     "@dmeents/semantic-release-yarn": 1.1.13
     "@semantic-release/commit-analyzer": ^13.0.0
-    "@semantic-release/error": ^3.0.0
+    "@semantic-release/error": ^4.0.0
     "@semantic-release/git": ^10.0.1
     "@semantic-release/github": ^10.0.0
     "@semantic-release/release-notes-generator": ^14.0.0

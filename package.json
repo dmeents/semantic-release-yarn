@@ -67,7 +67,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@semantic-release/error": "^3.0.0",
+    "@semantic-release/error": "^4.0.0",
     "execa": "^5.1.1",
     "js-yaml": "^4.1.0",
     "read-pkg": "^5.2.0",
